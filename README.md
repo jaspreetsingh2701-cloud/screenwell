@@ -35,15 +35,15 @@ npm run dev          # http://localhost:5173
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Start dev server with mock API |
-| `npm run build` | Type-check and production build |
-| `npm run preview` | Serve the production build |
-| `npm run test` | Unit and component tests (Vitest) |
-| `npm run test:e2e` | End-to-end tests (Playwright) |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | TypeScript check |
+| Command             | What it does                      |
+| ------------------- | --------------------------------- |
+| `npm run dev`       | Start dev server with mock API    |
+| `npm run build`     | Type-check and production build   |
+| `npm run preview`   | Serve the production build        |
+| `npm run test`      | Unit and component tests (Vitest) |
+| `npm run test:e2e`  | End-to-end tests (Playwright)     |
+| `npm run lint`      | ESLint                            |
+| `npm run typecheck` | TypeScript check                  |
 
 ## Debugging
 
