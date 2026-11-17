@@ -1,3 +1,11 @@
-﻿export default function App() {
-  return <h1 className="p-8 text-3xl font-bold text-teal-700">Screenwell by Tilda Research</h1>
+﻿import { RouterProvider } from 'react-router-dom'
+import Providers from '@/app/providers'
+import { router } from '@/app/router'
+
+export default function App() {
+  return (
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
+  )
 }
