@@ -1,0 +1,88 @@
+export type Verdict = 'pass' | 'fail' | 'unclear'
+export type CriterionType = 'inclusion' | 'exclusion'
+export type DataStatus = 'present' | 'missing'
+export type DecisionKind = 'confirmed' | 'changed'
+export type Sex = 'F' | 'M'
+
+export type CandidateStatus = 'needs_review' | 'likely_eligible' | 'likely_ineligible' | 'confirmed'
+
+export type CandidateSort = 'confidence_asc' | 'updated_desc' | 'id_asc'
+
+export interface Evidence {
+  text: string
+  source: string
+}
+
+export interface AiSuggestion {
+  verdict: Verdict
+  confidence: number // 0 to 1
+  evidence: Evidence
+}
+
+export interface Decision {
+  kind: DecisionKind
+  verdict: Verdict
+  reason?: string
+  decidedBy: string
+  decidedAt: string
+}
+
+export interface Criterion {
+  id: string
+  type: CriterionType
+  title: string // plain language
+  rule: string // formal wording
+  dataStatus: DataStatus
+  ai: AiSuggestion | null // null when data is missing
+  decision: Decision | null
+  flagged: boolean
+  flagNote?: string
+}
+
+export interface Candidate {
+  id: string
+  age: number
+  sex: Sex
+  site: string
+  updatedAt: string
+  criteria: Criterion[]
+}
+
+export interface CandidateSummary {
+  id: string
+  age: number
+  sex: Sex
+  site: string
+  status: CandidateStatus
+  criteriaTotal: number
+  criteriaDone: number
+  needsAttention: number
+  lowestConfidence: number
+  updatedAt: string
+}
+
+export interface CandidateDetail {
+  id: string
+  age: number
+  sex: Sex
+  site: string
+  status: CandidateStatus
+  updatedAt: string
+  criteria: Criterion[]
+}
+
+export interface CandidateListParams {
+  page: number
+  pageSize: number
+  q: string
+  status: CandidateStatus | 'all'
+  sort: CandidateSort
+}
+
+export interface CandidateListResponse {
+  items: CandidateSummary[]
+  total: number
+  page: number
+  pageSize: number
+  counts: Record<CandidateStatus, number>
+}
