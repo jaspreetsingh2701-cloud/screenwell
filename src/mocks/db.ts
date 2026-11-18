@@ -157,3 +157,22 @@ export function rescreen(id: string): CandidateDetail {
   candidate.updatedAt = new Date().toISOString()
   return toDetail(candidate)
 }
+
+export function finalize(id: string): CandidateDetail {
+  const candidate = getOrThrow(id)
+  if (candidate.criteria.some(needsAttention)) {
+    throw new DbError('Resolve every item that needs attention first.')
+  }
+  candidate.criteria.forEach((criterion) => {
+    if (!criterion.decision && criterion.ai) {
+      criterion.decision = {
+        kind: 'confirmed',
+        verdict: criterion.ai.verdict,
+        decidedBy: CURRENT_USER,
+        decidedAt: new Date().toISOString(),
+      }
+    }
+  })
+  candidate.updatedAt = new Date().toISOString()
+  return toDetail(candidate)
+}
