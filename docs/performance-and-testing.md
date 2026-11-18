@@ -14,11 +14,11 @@ Open the Vercel project dashboard and select **Speed Insights** to review field 
 
 Use these targets when reviewing field performance:
 
-| Metric | What it indicates                    | Good target |
-| ------ | ------------------------------------ | ----------- |
-| LCP    | Loading performance of the main content | ≤ 2.5 s |
-| INP    | Responsiveness to user interactions  | ≤ 200 ms    |
-| CLS    | Unexpected visual movement           | ≤ 0.1       |
+| Metric | What it indicates                       | Good target |
+| ------ | --------------------------------------- | ----------- |
+| LCP    | Loading performance of the main content | ≤ 2.5 s     |
+| INP    | Responsiveness to user interactions     | ≤ 200 ms    |
+| CLS    | Unexpected visual movement              | ≤ 0.1       |
 
 Vercel Speed Insights can also expose supporting metrics such as FCP and TTFB. These are performance indicators, not substitutes for the Core Web Vitals.
 
@@ -33,12 +33,12 @@ Record the URL, date, device profile, Lighthouse Performance score, LCP, INP/TBT
 
 ## Current instrumentation status
 
-| Item                         | Status                                                                      |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| Vercel Analytics component   | Integrated in the app                                                       |
-| Vercel Speed Insights component | Integrated in the app                                                    |
-| Live Web Vitals values       | Not verified here; check the Vercel dashboard after deployment and traffic |
-| Lighthouse baseline          | Not captured yet                                                            |
+| Item                            | Status                                                                     |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| Vercel Analytics component      | Integrated in the app                                                      |
+| Vercel Speed Insights component | Integrated in the app                                                      |
+| Live Web Vitals values          | Not verified here; check the Vercel dashboard after deployment and traffic |
+| Lighthouse baseline             | Not captured yet                                                           |
 
 ## Automated tests
 
