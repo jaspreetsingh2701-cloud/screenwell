@@ -60,12 +60,9 @@ function DrugContent({ data }: { data: DrugResponse }) {
         <Card title="Interim study results" className="min-w-0 lg:col-span-2">
           <div className="flex flex-col gap-3 md:hidden">
             {data.results.map((row) => (
-              <article
-                key={row.abbreviation}
-                className="rounded-lg border border-gray-200 p-3"
-              >
+              <article key={row.abbreviation} className="rounded-lg border border-gray-200 p-3">
                 <h3 className="text-sm font-semibold">
-                  {row.measure} <span className="font-normal text-gray-600">({row.abbreviation})</span>
+                  {row.measure}{' '}\n                  <span className="font-normal text-gray-600">({row.abbreviation})</span>
                 </h3>
                 <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
                   <div className="min-w-0">
