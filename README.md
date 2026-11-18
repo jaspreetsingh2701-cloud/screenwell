@@ -18,17 +18,17 @@ Screenwell helps clinical trial coordinators review whether synthetic patient re
 
 ## Technology stack
 
-| Layer | Technology |
-|---|---|
-| UI | React 19, TypeScript |
-| Build | Vite |
-| Styling and components | Tailwind CSS, Radix UI |
-| Routing | React Router |
-| Server state | TanStack Query |
-| Client state | Zustand (where used) |
-| API simulation | Mock Service Worker (MSW) |
-| Tests | Vitest, React Testing Library |
-| Monitoring | Vercel Analytics, Vercel Speed Insights |
+| Layer                   | Technology                              |
+| ----------------------- | --------------------------------------- |
+| UI                      | React 19, TypeScript                    |
+| Build                   | Vite                                    |
+| Styling and components  | Tailwind CSS, Radix UI                  |
+| Routing                 | React Router                            |
+| Server state            | TanStack Query                          |
+| Client state            | Zustand (where used)                    |
+| API simulation          | Mock Service Worker (MSW)               |
+| Tests                   | Vitest, React Testing Library           |
+| Monitoring              | Vercel Analytics, Vercel Speed Insights |
 
 ## Getting started
 
@@ -46,26 +46,26 @@ Open http://localhost:5173.
 
 ## Available scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start the Vite development server |
-| `npm run build` | Type-check and create the production build |
-| `npm run preview` | Preview the production build |
-| `npm run test` | Run unit and integration tests |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run lint` | Run ESLint |
-| `npm run typecheck` | Run TypeScript checks |
-| `npm run format` | Format project files |
-| `npm run format:check` | Check formatting |
+| Command               | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| `npm run dev`         | Start the Vite development server              |
+| `npm run build`       | Type-check and create the production build     |
+| `npm run preview`     | Preview the production build                   |
+| `npm run test`        | Run unit and integration tests                 |
+| `npm run test:watch`  | Run tests in watch mode                        |
+| `npm run lint`        | Run ESLint                                     |
+| `npm run typecheck`   | Run TypeScript checks                          |
+| `npm run format`      | Format project files                           |
+| `npm run format:check` | Check formatting                               |
 
 ## Mock API behavior
 
 The MSW layer simulates backend responses. The example environment variables are:
 
-| Variable | Example | Effect |
-|---|---:|---|
-| `VITE_API_LATENCY` | `600` | Adds simulated response latency in milliseconds |
-| `VITE_FAILURE_RATE` | `0.3` | Configures a 30% simulated request failure rate |
+| Variable            | Example | Effect                                              |
+| ------------------- | ------- | --------------------------------------------------- |
+| `VITE_API_LATENCY`  | `600`   | Adds simulated response latency in milliseconds    |
+| `VITE_FAILURE_RATE` | `0.3`   | Configures a 30% simulated request failure rate     |
 
 Use these settings to inspect loading, error and optimistic rollback behavior.
 
