@@ -1,7 +1,9 @@
 import { delay, http, HttpResponse } from 'msw'
 import type { CandidateListParams, CandidateSort, CandidateStatus, Verdict } from '@/types'
-import { trial } from './data/trial'
+import { drug } from './data/drug'
+import { trial, trialDetails, trialDocuments } from './data/trial'
 import * as db from './db'
+import { confidenceStats } from './stats'
 
 const latency = Number(import.meta.env.VITE_API_LATENCY ?? 600)
 const failureRate = Number(import.meta.env.VITE_FAILURE_RATE ?? 0)
@@ -29,6 +31,23 @@ function respond<T extends object>(run: () => T) {
 }
 
 export const handlers = [
+  http.get('/api/trial/overview', async () => {
+    const failure = await simulateFailure()
+    if (failure) return failure
+    return HttpResponse.json({
+      ...trialDetails,
+      stats: trial,
+      confidence: confidenceStats(),
+      documents: trialDocuments,
+    })
+  }),
+
+  http.get('/api/drug', async () => {
+    const failure = await simulateFailure()
+    if (failure) return failure
+    return HttpResponse.json(drug)
+  }),
+
   http.get('/api/trial', async () => {
     const failure = await simulateFailure()
     if (failure) return failure
