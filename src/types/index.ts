@@ -86,3 +86,14 @@ export interface CandidateListResponse {
   pageSize: number
   counts: Record<CandidateStatus, number>
 }
+
+export interface TrialStats {
+  id: string
+  phase: string
+  condition: string
+  sites: string[]
+  target: number
+  enrolled: number
+  consented: number
+  screenFailed: number
+}
