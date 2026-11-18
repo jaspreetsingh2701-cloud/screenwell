@@ -30,11 +30,11 @@ tests/
 
 ## State responsibilities
 
-| State | Owner | Use |
-|---|---|---|
-| Remote/server state | TanStack Query | Candidates, trial/drug data and review mutations |
-| Temporary UI state | React component state | Dialogs, tabs and transient interactions |
-| Shared client state | Zustand (where used) | Client-side state that needs to be shared |
-| Mock service state | MSW handlers and mock data | Synthetic API behavior for the demo |
+| State               | Owner                | Use                                               |
+| ------------------- | -------------------- | ------------------------------------------------- |
+| Remote/server state | TanStack Query       | Candidates, trial/drug data and review mutations |
+| Temporary UI state  | React component state | Dialogs, tabs and transient interactions         |
+| Shared client state | Zustand (where used) | Client-side state that needs to be shared        |
+| Mock service state  | MSW handlers and mock data | Synthetic API behavior for the demo         |
 
 Keep business rules in feature or shared logic rather than duplicating them across presentation components.
