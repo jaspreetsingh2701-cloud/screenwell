@@ -97,3 +97,63 @@ export interface TrialStats {
   consented: number
   screenFailed: number
 }
+
+export interface TrialDocument {
+  id: string
+  name: string
+  version: string
+  approvedOn: string
+  status: 'current' | 'superseded'
+  note?: string
+}
+
+export interface ConfidenceStats {
+  average: number // 0 to 1, over criteria the AI answered
+  high: number
+  medium: number
+  low: number
+  missing: number // criteria where AI had no data to answer
+  total: number
+}
+
+export interface TrialOverview {
+  stats: TrialStats
+  status: string
+  sponsor: string
+  startDate: string
+  primaryCompletion: string
+  principalInvestigator: string
+  confidence: ConfidenceStats
+  documents: TrialDocument[]
+}
+
+export interface DrugInfo {
+  name: string
+  drugClass: string
+  route: string
+  dose: string
+  comparator: string
+  condition: string
+  dataAsOf: string
+}
+
+export interface DrugResult {
+  measure: string
+  abbreviation: string
+  treatment: string
+  control: string
+  reading: string
+}
+
+export interface MonthlyParticipants {
+  month: string
+  screened: number
+  enrolled: number
+  withdrawn: number
+}
+
+export interface DrugResponse {
+  info: DrugInfo
+  results: DrugResult[]
+  monthly: MonthlyParticipants[]
+}

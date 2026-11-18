@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { DataState } from '@/components/DataState'
 import { ErrorBanner } from '@/components/ErrorBanner'
 import { Pagination } from '@/components/Pagination'
@@ -14,6 +15,7 @@ import { PAGE_SIZES, useCandidateFilters } from '../hooks/useCandidateFilters'
 import { useCandidates } from '../hooks/useCandidates'
 
 export default function CandidateQueuePage() {
+  useDocumentTitle('Candidate queue')
   const { params, update } = useCandidateFilters()
   const candidates = useCandidates(params)
   const trial = useTrial()
@@ -90,7 +92,7 @@ export default function CandidateQueuePage() {
         {candidates.isFetching && (
           <div
             aria-hidden="true"
-            className="absolute inset-x-0 top-0 z-10 h-0.5 animate-pulse bg-teal-600"
+            className="absolute inset-x-0 top-0 z-10 h-0.5 animate-pulse bg-teal-600 motion-reduce:animate-none"
           />
         )}
         <DataState

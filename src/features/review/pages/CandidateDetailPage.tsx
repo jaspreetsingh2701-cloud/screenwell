@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { Link, useParams } from 'react-router-dom'
 import { DataState } from '@/components/DataState'
 import { useToast } from '@/components/toast/toastContext'
@@ -33,6 +34,7 @@ function ReviewSkeleton() {
 
 export default function CandidateDetailPage() {
   const { id = '' } = useParams()
+  useDocumentTitle('Review ' + id)
   const candidate = useCandidate(id)
   const actions = useReviewActions(id)
   const { toast } = useToast()
@@ -107,12 +109,12 @@ export default function CandidateDetailPage() {
                   <StatusBadge status={data.status} />
                 </div>
                 <p className="text-sm text-gray-600">
-                  {data.age} / {data.sex} · {data.site} · Trial ONC-204
+                  {data.age} / {data.sex} Â· {data.site} Â· Trial ONC-204
                 </p>
               </div>
               <div className="flex flex-col items-end gap-1">
                 <Button variant="dark" disabled={!canFinalize} onClick={actions.finalize}>
-                  {actions.isFinalizing ? 'Finalizing…' : 'Finalize eligibility'}
+                  {actions.isFinalizing ? 'Finalizingâ€¦' : 'Finalize eligibility'}
                 </Button>
                 <span className="text-sm text-gray-600">{helper}</span>
               </div>
@@ -177,7 +179,7 @@ export default function CandidateDetailPage() {
             <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-gray-600">
               <span>Your decisions are kept if you re-run the AI.</span>
               <Button variant="ghost" disabled={actions.isRescreening} onClick={actions.rescreen}>
-                {actions.isRescreening ? 'Re-running AI…' : 'Re-run AI screening'}
+                {actions.isRescreening ? 'Re-running AIâ€¦' : 'Re-run AI screening'}
               </Button>
             </div>
           </>

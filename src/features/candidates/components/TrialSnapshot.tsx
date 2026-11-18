@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/Skeleton'
 import type { CandidateStatus, TrialStats } from '@/types'
-import { FunnelChart } from './FunnelChart'
+import { BarList } from '@/components/BarList'
 
 interface Props {
   trial?: TrialStats
@@ -28,10 +28,10 @@ export function TrialSnapshot({ trial, counts, trialFailed, countsFailed }: Prop
           <>
             <div>
               <h2 className="text-base font-semibold">
-                {trial.id} · Phase {trial.phase}
+                {trial.id} Â· Phase {trial.phase}
               </h2>
               <p className="text-sm text-gray-600">
-                {trial.condition} · {trial.sites.length} sites
+                {trial.condition} Â· {trial.sites.length} sites
               </p>
             </div>
             <div className="flex justify-between text-sm">
@@ -64,8 +64,8 @@ export function TrialSnapshot({ trial, counts, trialFailed, countsFailed }: Prop
       <div className="flex min-h-40 flex-col gap-3 rounded-xl border border-gray-200 bg-white p-5">
         <h2 className="text-base font-semibold">Screening funnel</h2>
         {trial && counts ? (
-          <FunnelChart
-            steps={[
+          <BarList
+            items={[
               { label: 'Screened', value: screened, color: '#0f766e' },
               { label: 'Eligible', value: eligible, color: '#14b8a6' },
               { label: 'Consented', value: trial.consented, color: '#5eead4' },
