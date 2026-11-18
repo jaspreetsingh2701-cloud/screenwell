@@ -1,71 +1,82 @@
 # Screenwell by Tilda Research
 
-Screenwell helps clinical trial coordinators decide which patients can join a
-trial. It shows AI-suggested eligibility verdicts with confidence and chart
-evidence, and the coordinator confirms or changes each one before finalizing.
+Screenwell helps clinical trial coordinators review whether synthetic patient records may qualify for a clinical trial. It presents AI-suggested eligibility verdicts, confidence and chart evidence, while keeping the coordinator responsible for confirming or changing each decision.
 
-> All data is synthetic. The AI and the backend are simulated (MSW).
+> **Demo only:** All data is synthetic. The API and AI screening behavior are simulated using MSW. Do not use this application for real patient data or clinical decisions.
 
 ## Features
 
-- **Candidate queue:** debounced search, status filter, sorting, pagination
-- **Screening funnel:** Screened → Eligible → Consented → Enrolled
-- **Simple review screen:** shows only criteria that need attention
-- **Clear AI vs human labels:** "AI suggestion" vs "Confirmed/Changed by you"
-- **Missing-data handling:** AI answer hidden, manual verification required
-- **Optimistic decisions** with 5-second undo and rollback on failure
-- **Trial page:** details, progress, AI confidence, documents
-- **Drug page:** details and interim results with full medical terms
-- Loading, empty and error states; responsive; keyboard accessible
+- Candidate queue with debounced search, status filters, sorting and pagination.
+- Screening funnel: Screened → Eligible → Consented → Enrolled.
+- Review screen focused on criteria that need attention.
+- Clear AI suggestion versus human decision labels.
+- Missing-data handling with manual verification.
+- Optimistic decisions with a five-second undo window and rollback on failure.
+- Trial details, progress, AI confidence and documents.
+- Drug details and interim results.
+- Loading, empty and error states; responsive and keyboard-accessible interactions.
 
-## Tech stack
+## Technology stack
 
-React, TypeScript, Vite, Tailwind CSS, Radix UI, TanStack Query,
-React Router, MSW, Vitest, React Testing Library, Playwright
+| Layer                  | Technology                              |
+| ---------------------- | --------------------------------------- |
+| UI                     | React 19, TypeScript                    |
+| Build                  | Vite                                    |
+| Styling and components | Tailwind CSS, Radix UI                  |
+| Routing                | React Router                            |
+| Server state           | TanStack Query                          |
+| Client state           | Zustand (where used)                    |
+| API simulation         | Mock Service Worker (MSW)               |
+| Tests                  | Vitest, React Testing Library           |
+| Monitoring             | Vercel Analytics, Vercel Speed Insights |
 
 ## Getting started
 
-Requires Node 20+.
+Requires Node.js 20 or later.
 
 ```bash
-npm install
+git clone https://github.com/jaspreetsingh2701-cloud/screenwell.git
+cd screenwell
+npm ci
 cp .env.example .env
-npm run dev          # http://localhost:5173
+npm run dev
 ```
 
-## Scripts
+Open http://localhost:5173.
 
-| Command             | What it does                      |
-| ------------------- | --------------------------------- |
-| `npm run dev`       | Start dev server with mock API    |
-| `npm run build`     | Type-check and production build   |
-| `npm run preview`   | Serve the production build        |
-| `npm run test`      | Unit and component tests (Vitest) |
-| `npm run test:e2e`  | End-to-end tests (Playwright)     |
-| `npm run lint`      | ESLint                            |
-| `npm run typecheck` | TypeScript check                  |
+## Available scripts
 
-## Debugging
+| Command                | Description                                |
+| ---------------------- | ------------------------------------------ |
+| `npm run dev`          | Start the Vite development server          |
+| `npm run build`        | Type-check and create the production build |
+| `npm run preview`      | Preview the production build               |
+| `npm run test`         | Run unit and integration tests             |
+| `npm run test:watch`   | Run tests in watch mode                    |
+| `npm run lint`         | Run ESLint                                 |
+| `npm run typecheck`    | Run TypeScript checks                      |
+| `npm run format`       | Format project files                       |
+| `npm run format:check` | Check formatting                           |
 
-- **Query cache:** TanStack Query Devtools (bottom-left in dev)
-- **Network:** MSW logs every mocked request in the browser console
-- **Simulate problems** in `.env`:
-  - `VITE_API_LATENCY=800` slows responses (see skeletons)
-  - `VITE_FAILURE_RATE=0.3` fails 30% of requests (see errors, rollback)
-- **Empty state:** search for a term that matches nothing
-- **Tests:** `npm run test -- --watch` or `npx playwright test --ui`
+## Mock API behavior
 
-## Architecture
+The MSW layer simulates backend responses. The example environment variables are:
 
-(to write: feature-based folders, data flow, state split of server state in
-TanStack Query, URL state for filters, small local state for UI)
+| Variable            | Example | Effect                                          |
+| ------------------- | ------- | ----------------------------------------------- |
+| `VITE_API_LATENCY`  | `600`   | Adds simulated response latency in milliseconds |
+| `VITE_FAILURE_RATE` | `0.3`   | Configures a 30% simulated request failure rate |
 
-## Key decisions, trade-offs, next steps
+Use these settings to inspect loading, error and optimistic rollback behavior.
 
-(to write: why these libraries, assumptions, and what I'd build next:
-real AI re-screen, drug analytics, risk matrix, Completed/Withdrawn funnel
-stages, server-side pagination, more e2e tests)
+## Performance
 
-## How I used AI tools
+Vercel Analytics and Speed Insights are mounted in the application. Once the project is deployed and has generated traffic, use the Vercel dashboard to review real-user performance and Core Web Vitals. See [Performance and testing](docs/performance-and-testing.md) for the metrics and recommended Lighthouse checks.
 
-(to write)
+## Documentation
+
+See the [docs index](docs/README.md) for the short product, architecture and performance notes.
+
+## AI-assisted development
+
+AI tools assisted with implementation and debugging, MSW handler scenarios, test-case ideation and test authoring, and documentation. Suggestions and generated code were reviewed and validated as part of the development workflow.
